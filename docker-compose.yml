@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  node:
+    container_name: node
+    build:
+      context: ./
+      target: production
+    env_file:
+      - .env.production
+    ports:
+      - 8080:8080
+
+  mysql:
+    container_name: mysql
+    image: mariadb:10.5
+    ports:
+      - 33060:3306
+    volumes:
+      - database:/var/lib/mysql:delegated
+    env_file:
+      - .database.env
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - 8081:80
+    env_file:
+      - .database.env
+
+volumes:
+  database:
