@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class portfolio1644065466190 implements MigrationInterface {
-  name = 'portfolio1644065466190';
+export class portfolio1644237304237 implements MigrationInterface {
+  name = 'portfolio1644237304237';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
@@ -11,7 +11,7 @@ export class portfolio1644065466190 implements MigrationInterface {
       `CREATE TABLE \`language\` (\`id\` varchar(36) NOT NULL, \`name\` varchar(20) NOT NULL, PRIMARY KEY (\`id\`)) ENGINE=InnoDB`,
     );
     await queryRunner.query(
-      `CREATE TABLE \`recruit\` (\`id\` varchar(36) NOT NULL, \`title\` varchar(36) NOT NULL, \`thumbnail\` varchar(20) NOT NULL, \`content\` text NOT NULL, PRIMARY KEY (\`id\`)) ENGINE=InnoDB`,
+      `CREATE TABLE \`recruit\` (\`id\` varchar(36) NOT NULL, \`title\` varchar(36) NOT NULL, \`thumbnail\` varchar(20) NOT NULL, \`content\` text NOT NULL, \`userId\` varchar(25) NOT NULL, PRIMARY KEY (\`id\`)) ENGINE=InnoDB`,
     );
     await queryRunner.query(
       `CREATE TABLE \`feature\` (\`id\` varchar(36) NOT NULL, \`name\` varchar(20) NOT NULL, PRIMARY KEY (\`id\`)) ENGINE=InnoDB`,

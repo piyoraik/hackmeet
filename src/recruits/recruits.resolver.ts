@@ -31,8 +31,9 @@ export class RecruitsResolver {
     @Args('createRecruit') recruit: CreateRecruitsDTO,
     @Context() context: any,
   ) {
-    // console.log(context.req.user);
-    return this.recruitsService.create(recruit);
+    const payload = context.req.user as JwtPayload;
+    console.log(payload);
+    return this.recruitsService.create(recruit, payload.sub);
   }
 
   // @Mutation(() => Recruit, { name: 'updateRecruit' })

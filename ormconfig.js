@@ -12,9 +12,9 @@ module.exports = {
   synchronize: false,
   logging: false,
   cli: {
-    entitiesDir: 'dist/entity',
-    migrationsDir: 'dist/migration',
-    seedersDir: 'dist/seeder/seeds',
-    factoriesDir: 'dist/seeder/factories',
+    entitiesDir: 'src/entity',
+    migrationsDir: 'src/migration',
+    seedersDir: 'src/seeder/seeds',
+    factoriesDir: 'src/seeder/factories',
   },
 };

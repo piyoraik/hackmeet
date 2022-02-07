@@ -43,4 +43,7 @@ export class Recruit {
   @ManyToMany(() => Feature, (feature) => feature.recruits)
   @JoinTable()
   features: Feature[];
+
+  @Column({ type: 'varchar', length: 25, nullable: false })
+  userId: string;
 }

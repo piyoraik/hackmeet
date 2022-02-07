@@ -16,7 +16,7 @@ export class RecruitsService {
   ) {}
 
   // create
-  async create(createRecruitDTO: CreateRecruitsDTO) {
+  async create(createRecruitDTO: CreateRecruitsDTO, userId: string) {
     const { languages, frameworks, features, ...recruit } = createRecruitDTO;
     const resLangues = await Promise.all(
       languages.map(async (language) => {
@@ -42,6 +42,7 @@ export class RecruitsService {
       languages: resLangues,
       frameworks: resFrameworks,
       features: resFeatures,
+      userId,
     };
 
     return await this.recruitsRepository.createRecruit(createRecruit);
