@@ -13,6 +13,14 @@ export class FrameWork {
   @Field()
   name: string;
 
+  @Column({ type: 'text', nullable: false })
+  @Field()
+  icon: string;
+
+  @Column({ type: 'varchar', length: 20, nullable: false })
+  @Field()
+  color: string;
+
   @ManyToMany(() => Recruit, (recruit) => recruit.frameworks)
   recruits: Recruit[];
 }

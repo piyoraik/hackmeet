@@ -5,11 +5,15 @@
 type FrameWork {
   id: ID!
   name: String!
+  icon: String!
+  color: String!
 }
 
 type Language {
   id: ID!
   name: String!
+  icon: String!
+  color: String!
   recruits: [Recruit!]!
 }
 
