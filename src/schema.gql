@@ -30,6 +30,8 @@ type Recruit {
 type Feature {
   id: ID!
   name: String!
+  icon: String!
+  color: String!
 }
 
 type Query {

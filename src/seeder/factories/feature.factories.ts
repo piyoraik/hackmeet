@@ -1,9 +1,12 @@
 import { Feature } from '../../entity/features.entity';
 import { define } from 'typeorm-seeding';
+import { CreateFeaturesDTO } from 'src/features/dto/create.features.dto';
 
-define(Feature, (_, name: string): Feature => {
+define(Feature, (_, createFeatureDTO: CreateFeaturesDTO): Feature => {
   const feature = new Feature();
-  feature.name = name;
+  feature.name = createFeatureDTO.name;
+  feature.icon = createFeatureDTO.icon;
+  feature.color = createFeatureDTO.color;
 
   return feature;
 });
