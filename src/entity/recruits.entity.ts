@@ -6,12 +6,14 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Feature } from './features.entity';
 import { FrameWork } from './frameworks.entity';
 import { Language } from './languages.entity';
+import { User } from './user.entity';
 
 @Entity()
 @ObjectType()
@@ -47,9 +49,6 @@ export class Recruit {
   @JoinTable()
   features: Feature[];
 
-  @Column({ type: 'varchar', length: 50, nullable: false })
-  userId: string;
-
   @CreateDateColumn()
   @Field()
   createdAt: Date;
@@ -61,4 +60,8 @@ export class Recruit {
   @DeleteDateColumn()
   @Field()
   deletedAt: Date;
+
+  @ManyToOne(() => User, (user) => user.recruits)
+  @Field()
+  user: User;
 }

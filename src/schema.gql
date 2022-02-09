@@ -17,6 +17,23 @@ type Language {
   recruits: [Recruit!]!
 }
 
+type User {
+  id: ID!
+  name: String
+  nickname: String
+  description: String
+  userId: String!
+  picture: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Recruit {
   id: ID!
   title: String!
@@ -28,30 +45,14 @@ type Recruit {
   createdAt: DateTime!
   updatedAt: DateTime!
   deletedAt: DateTime!
+  user: User!
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type Feature {
   id: ID!
   name: String!
   icon: String!
   color: String!
-}
-
-type User {
-  id: ID!
-  name: String!
-  nickname: String!
-  description: String!
-  userId: String!
-  picture: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  deletedAt: DateTime!
 }
 
 type Query {

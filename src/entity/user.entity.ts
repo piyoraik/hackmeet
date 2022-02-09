@@ -6,7 +6,9 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
+  OneToMany,
 } from 'typeorm';
+import { Recruit } from './recruits.entity';
 
 @Entity()
 @ObjectType()
@@ -16,15 +18,15 @@ export class User {
   id: string;
 
   @Column({ type: 'varchar', length: 30, nullable: true })
-  @Field()
+  @Field({ nullable: true })
   name: string;
 
   @Column({ type: 'varchar', length: 30, nullable: true })
-  @Field()
+  @Field({ nullable: true })
   nickname: string;
 
   @Column({ type: 'varchar', length: 20, nullable: true })
-  @Field()
+  @Field({ nullable: true })
   description: string;
 
   @Column({ type: 'varchar', length: 50, nullable: false })
@@ -32,7 +34,7 @@ export class User {
   userId: string;
 
   @Column({ type: 'varchar', length: 255, nullable: true })
-  @Field()
+  @Field({ nullable: true })
   picture: string;
 
   @CreateDateColumn()
@@ -44,6 +46,9 @@ export class User {
   updatedAt: Date;
 
   @DeleteDateColumn()
-  @Field()
+  @Field({ nullable: true })
   deletedAt: Date;
+
+  @OneToMany(() => Recruit, (recruit) => recruit.user)
+  recruits: Recruit[];
 }

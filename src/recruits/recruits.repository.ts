@@ -1,11 +1,12 @@
 import { NotFoundException } from '@nestjs/common';
 import { Recruit } from 'src/entity/recruits.entity';
-import { DeepPartial, EntityRepository, ILike, Repository } from 'typeorm';
+import { EntityRepository, ILike, Repository } from 'typeorm';
+import { CreateRecruitType } from './dto/create.recruits.dto';
 
 @EntityRepository(Recruit)
 export class RecruitsRepository extends Repository<Recruit> {
   // Createの操作
-  async createRecruit(createRecruit) {
+  async createRecruit(createRecruit: CreateRecruitType) {
     const recruit = this.create({
       ...createRecruit,
     });
@@ -17,7 +18,7 @@ export class RecruitsRepository extends Repository<Recruit> {
   async findOneRecruit(attrs: Partial<Recruit>) {
     const recruit = await this.findOne({
       where: attrs,
-      relations: ['languages', 'frameworks', 'features'],
+      relations: ['languages', 'frameworks', 'features', 'user'],
     });
     if (!recruit) {
       throw new NotFoundException('Recruit Not Found');
@@ -33,6 +34,7 @@ export class RecruitsRepository extends Repository<Recruit> {
     }
     const recruits = await this.find({
       where: parseAttrs,
+      relations: ['languages', 'frameworks', 'features', 'user'],
     });
     if (!recruits) {
       throw new NotFoundException('Recruit Not Found');

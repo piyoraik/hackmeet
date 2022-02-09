@@ -3,7 +3,11 @@ import { Recruit } from 'src/entity/recruits.entity';
 import { FeaturesService } from 'src/features/features.service';
 import { FrameworksService } from 'src/frameworks/frameworks.service';
 import { LanguagesService } from 'src/languages/languages.service';
-import { CreateRecruitsDTO } from './dto/create.recruits.dto';
+import { UserService } from 'src/user/user.service';
+import {
+  CreateRecruitsDTO,
+  CreateRecruitType,
+} from './dto/create.recruits.dto';
 import { RecruitsRepository } from './recruits.repository';
 
 @Injectable()
@@ -13,11 +17,15 @@ export class RecruitsService {
     private readonly languageService: LanguagesService,
     private readonly frameworkService: FrameworksService,
     private readonly featureService: FeaturesService,
+    private readonly userService: UserService,
   ) {}
 
   // create
   async create(createRecruitDTO: CreateRecruitsDTO, userId: string) {
     const { languages, frameworks, features, ...recruit } = createRecruitDTO;
+
+    const user = await this.userService.findOne({ userId });
+
     const resLangues = await Promise.all(
       languages.map(async (language) => {
         const res = this.languageService.findOneID(language);
@@ -37,19 +45,21 @@ export class RecruitsService {
       }),
     );
 
-    const createRecruit = {
+    const createRecruit: CreateRecruitType = {
       ...recruit,
       languages: resLangues,
       frameworks: resFrameworks,
       features: resFeatures,
-      userId,
+      user,
     };
     return await this.recruitsRepository.createRecruit(createRecruit);
   }
 
   // findAll
   async findAll() {
-    return await this.recruitsRepository.find();
+    return await this.recruitsRepository.find({
+      relations: ['languages', 'frameworks', 'features', 'user'],
+    });
   }
 
   // findOneID

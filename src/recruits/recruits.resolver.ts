@@ -32,7 +32,6 @@ export class RecruitsResolver {
     @Context() context: any,
   ) {
     const payload = context.req.user as JwtPayload;
-    console.log(payload);
     return this.recruitsService.create(recruit, payload.sub);
   }
 
