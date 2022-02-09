@@ -8,6 +8,7 @@ import { LanguagesModule } from './languages/languages.module';
 import { FrameworksModule } from './frameworks/frameworks.module';
 import { FeaturesModule } from './features/features.module';
 import { AuthzModule } from './authz/authz.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { AuthzModule } from './authz/authz.module';
     FrameworksModule,
     FeaturesModule,
     AuthzModule,
+    UserModule,
   ],
 })
 export class AppModule {}

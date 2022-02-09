@@ -25,7 +25,15 @@ type Recruit {
   languages: [Language!]!
   frameworks: [FrameWork!]!
   features: [Feature!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
 }
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type Feature {
   id: ID!
@@ -34,17 +42,32 @@ type Feature {
   color: String!
 }
 
+type User {
+  id: ID!
+  name: String!
+  nickname: String!
+  description: String!
+  userId: String!
+  picture: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
+}
+
 type Query {
   recruits: [Recruit!]!
   findOneIdRecruit(id: String!): Recruit!
   languages: [Language!]!
   frameworks: [FrameWork!]!
   features: [Feature!]!
+  users: [User!]!
+  findUserId(id: String!): User!
 }
 
 type Mutation {
   createRecruit(createRecruit: CreateRecruitsDTO!): Recruit!
   deleteRecruit(id: String!): Recruit!
+  createUser(createUser: CreateUserDTO!): User!
 }
 
 input CreateRecruitsDTO {
@@ -54,4 +77,12 @@ input CreateRecruitsDTO {
   languages: [ID!]!
   frameworks: [ID!]!
   features: [ID!]!
+}
+
+input CreateUserDTO {
+  name: String!
+  nickname: String!
+  description: String!
+  userId: String!
+  picture: String!
 }

@@ -37,14 +37,13 @@ export class RecruitsService {
       }),
     );
 
-    const createRecruit: Recruit = {
+    const createRecruit = {
       ...recruit,
       languages: resLangues,
       frameworks: resFrameworks,
       features: resFeatures,
       userId,
     };
-
     return await this.recruitsRepository.createRecruit(createRecruit);
   }
 

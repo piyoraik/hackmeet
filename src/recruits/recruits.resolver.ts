@@ -2,7 +2,7 @@ import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CreateRecruitsDTO } from './dto/create.recruits.dto';
 import { RecruitsService } from './recruits.service';
 import { Recruit } from 'src/entity/recruits.entity';
-import { Request, UseGuards } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common';
 import { GraphqlAuthGuard } from 'src/authz/authz.guard';
 import { JwtPayload } from 'src/authz/types/jwt-payload.type';
 

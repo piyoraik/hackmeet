@@ -1,10 +1,13 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import {
   Column,
+  CreateDateColumn,
+  DeleteDateColumn,
   Entity,
   JoinTable,
   ManyToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { Feature } from './features.entity';
 import { FrameWork } from './frameworks.entity';
@@ -46,4 +49,16 @@ export class Recruit {
 
   @Column({ type: 'varchar', length: 50, nullable: false })
   userId: string;
+
+  @CreateDateColumn()
+  @Field()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  @Field()
+  updatedAt: Date;
+
+  @DeleteDateColumn()
+  @Field()
+  deletedAt: Date;
 }
