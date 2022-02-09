@@ -1,11 +1,11 @@
 import { NotFoundException } from '@nestjs/common';
 import { Recruit } from 'src/entity/recruits.entity';
-import { EntityRepository, ILike, Repository } from 'typeorm';
+import { DeepPartial, EntityRepository, ILike, Repository } from 'typeorm';
 
 @EntityRepository(Recruit)
 export class RecruitsRepository extends Repository<Recruit> {
   // Createの操作
-  async createRecruit(createRecruit: Recruit) {
+  async createRecruit(createRecruit) {
     const recruit = this.create({
       ...createRecruit,
     });
