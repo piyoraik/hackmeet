@@ -80,9 +80,9 @@ input CreateRecruitsDTO {
 }
 
 input CreateUserDTO {
-  name: String!
-  nickname: String!
-  description: String!
+  name: String
+  nickname: String
+  description: String
   userId: String!
-  picture: String!
+  picture: String
 }

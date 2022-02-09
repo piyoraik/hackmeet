@@ -15,7 +15,7 @@ export class User {
   @Field(() => ID)
   id: string;
 
-  @Column({ type: 'varchar', length: 30, nullable: false })
+  @Column({ type: 'varchar', length: 30, nullable: true })
   @Field()
   name: string;
 
@@ -31,7 +31,7 @@ export class User {
   @Field()
   userId: string;
 
-  @Column({ type: 'varchar', length: 255, nullable: false })
+  @Column({ type: 'varchar', length: 255, nullable: true })
   @Field()
   picture: string;
 
