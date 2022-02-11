@@ -18,7 +18,7 @@ export class RecruitsRepository extends Repository<Recruit> {
   async findOneRecruit(attrs: Partial<Recruit>) {
     const recruit = await this.findOne({
       where: attrs,
-      relations: ['languages', 'frameworks', 'features', 'user'],
+      relations: ['languages', 'frameworks', 'features', 'user', 'joins'],
     });
     if (!recruit) {
       throw new NotFoundException('Recruit Not Found');
@@ -34,7 +34,7 @@ export class RecruitsRepository extends Repository<Recruit> {
     }
     const recruits = await this.find({
       where: parseAttrs,
-      relations: ['languages', 'frameworks', 'features', 'user'],
+      relations: ['languages', 'frameworks', 'features', 'user', 'joins'],
     });
     if (!recruits) {
       throw new NotFoundException('Recruit Not Found');

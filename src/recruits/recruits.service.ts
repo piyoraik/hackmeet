@@ -58,7 +58,7 @@ export class RecruitsService {
   // findAll
   async findAll() {
     return await this.recruitsRepository.find({
-      relations: ['languages', 'frameworks', 'features', 'user'],
+      relations: ['languages', 'frameworks', 'features', 'user', 'joins'],
     });
   }
 

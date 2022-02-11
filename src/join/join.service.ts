@@ -1,15 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { Join } from 'src/entity/join.entity';
-import { CreateJoinDTO } from './dto/create.join.dto';
+import { RecruitsService } from 'src/recruits/recruits.service';
+import { UserService } from 'src/user/user.service';
+import { CreateJoinDTO, InputJoinDTO } from './dto/create.join.dto';
 import { JoinRepository } from './join.repository';
 
 @Injectable()
 export class JoinService {
-  constructor(private readonly joinRepository: JoinRepository) {}
+  constructor(
+    private readonly joinRepository: JoinRepository,
+    private readonly userService: UserService,
+    private readonly recruitService: RecruitsService,
+  ) {}
 
   // create
-  async create(createJoinDTO: CreateJoinDTO) {
-    return await this.joinRepository.createJoin(createJoinDTO);
+  async create(inputJoinDTO: InputJoinDTO, userId: string) {
+    const recruit = await this.recruitService.findOneID(inputJoinDTO.recruit);
+    const user = await this.userService.findOneID(userId);
+
+    const createJoin: CreateJoinDTO = {
+      recruit,
+      user,
+    };
+
+    return await this.joinRepository.createJoin(createJoin);
   }
 
   // findAll

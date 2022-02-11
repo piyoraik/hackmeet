@@ -18,6 +18,7 @@ export class UserRepository extends Repository<User> {
   async findOneUser(attrs: Partial<User>) {
     const user = await this.findOne({
       where: attrs,
+      relations: ['recruits', 'joins'],
     });
     if (!user) {
       throw new NotFoundException('User Not Found');
@@ -33,6 +34,7 @@ export class UserRepository extends Repository<User> {
     }
     const users = await this.find({
       where: parseAttrs,
+      relations: ['recruits', 'joins'],
     });
     if (!users) {
       throw new NotFoundException('User Not Found');

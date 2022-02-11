@@ -51,8 +51,10 @@ export class User {
   deletedAt: Date;
 
   @OneToMany(() => Recruit, (recruit) => recruit.user)
+  @Field(() => [Recruit])
   recruits: Recruit[];
 
   @OneToMany(() => Join, (join) => join.recruit)
+  @Field(() => [Join])
   joins: Join;
 }

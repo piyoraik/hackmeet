@@ -19,6 +19,8 @@ type User {
   createdAt: DateTime!
   updatedAt: DateTime!
   deletedAt: DateTime
+  recruits: [Recruit!]!
+  joins: [Join!]!
 }
 
 """
@@ -52,6 +54,7 @@ type Recruit {
   updatedAt: DateTime!
   deletedAt: DateTime!
   user: User!
+  joins: Join!
 }
 
 type Feature {

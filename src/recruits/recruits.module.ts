@@ -17,5 +17,6 @@ import { UserModule } from 'src/user/user.module';
     UserModule,
   ],
   providers: [RecruitsService, RecruitsResolver],
+  exports: [RecruitsService],
 })
 export class RecruitsModule {}
