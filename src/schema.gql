@@ -30,8 +30,8 @@ scalar DateTime
 
 type Join {
   id: ID!
-  recruit: Recruit!
-  user: User!
+  recruit: Recruit
+  user: User
 }
 
 type Language {
@@ -79,6 +79,7 @@ type Mutation {
   createRecruit(createRecruit: CreateRecruitsDTO!): Recruit!
   deleteRecruit(id: String!): Recruit!
   createUser(createUser: CreateUserDTO!): User!
+  createJoin(createJoin: InputJoinDTO!): Join!
 }
 
 input CreateRecruitsDTO {
@@ -96,4 +97,8 @@ input CreateUserDTO {
   description: String
   userId: String!
   picture: String
+}
+
+input InputJoinDTO {
+  recruit: ID!
 }

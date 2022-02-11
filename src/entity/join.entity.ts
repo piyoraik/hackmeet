@@ -11,10 +11,10 @@ export class Join {
   id: string;
 
   @ManyToOne(() => Recruit, (recruit) => recruit.joins)
-  @Field(() => Recruit)
+  @Field(() => Recruit, { nullable: true })
   recruit: Recruit;
 
   @ManyToOne(() => User, (user) => user.joins)
-  @Field(() => User)
+  @Field(() => User, { nullable: true })
   user: User;
 }
