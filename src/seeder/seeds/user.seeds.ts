@@ -10,6 +10,12 @@ export default class CreateUser implements Seeder {
       picture:
         'https://pbs.twimg.com/profile_images/1421858170855518209/BttM3etT_normal.jpg',
     },
+    {
+      nickname: 'ぴかちゅー',
+      userId: 'github|42093052',
+      picture:
+        'https://zukan.pokemon.co.jp/zukan-api/up/images/index/5bb0cfd44302cd4df0c0c88d37457931.png',
+    },
   ];
 
   public async run(factory: Factory) {

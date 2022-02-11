@@ -9,6 +9,7 @@ import { FrameworksModule } from './frameworks/frameworks.module';
 import { FeaturesModule } from './features/features.module';
 import { AuthzModule } from './authz/authz.module';
 import { UserModule } from './user/user.module';
+import { JoinModule } from './join/join.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { UserModule } from './user/user.module';
     FeaturesModule,
     AuthzModule,
     UserModule,
+    JoinModule,
   ],
 })
 export class AppModule {}

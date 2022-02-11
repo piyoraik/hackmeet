@@ -8,6 +8,7 @@ import {
   Column,
   OneToMany,
 } from 'typeorm';
+import { Join } from './join.entity';
 import { Recruit } from './recruits.entity';
 
 @Entity()
@@ -51,4 +52,7 @@ export class User {
 
   @OneToMany(() => Recruit, (recruit) => recruit.user)
   recruits: Recruit[];
+
+  @OneToMany(() => Join, (join) => join.recruit)
+  joins: Join;
 }
