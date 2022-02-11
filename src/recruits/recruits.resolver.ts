@@ -17,7 +17,8 @@ export class RecruitsResolver {
 
   @Query(() => Recruit, { name: 'findOneIdRecruit' })
   findOneId(@Args('id') id: string) {
-    return this.recruitsService.findOneID(id);
+    const recruit = this.recruitsService.findOneID(id);
+    return recruit;
   }
 
   // @Query(() => [Recruit], { name: 'searchRecruit', nullable: true })

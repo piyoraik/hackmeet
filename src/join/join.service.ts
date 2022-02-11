@@ -16,7 +16,7 @@ export class JoinService {
   // create
   async create(inputJoinDTO: InputJoinDTO, userId: string) {
     const recruit = await this.recruitService.findOneID(inputJoinDTO.recruit);
-    const user = await this.userService.findOneID(userId);
+    const user = await this.userService.findOne({ userId });
 
     const createJoin: CreateJoinDTO = {
       recruit,

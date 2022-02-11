@@ -64,10 +64,10 @@ export class Recruit {
   deletedAt: Date;
 
   @ManyToOne(() => User, (user) => user.recruits)
-  @Field()
+  @Field(() => User)
   user: User;
 
   @OneToMany(() => Join, (join) => join.recruit)
-  @Field()
+  @Field(() => [Join])
   joins: Join;
 }

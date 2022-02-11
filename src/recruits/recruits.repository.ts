@@ -18,7 +18,14 @@ export class RecruitsRepository extends Repository<Recruit> {
   async findOneRecruit(attrs: Partial<Recruit>) {
     const recruit = await this.findOne({
       where: attrs,
-      relations: ['languages', 'frameworks', 'features', 'user', 'joins'],
+      relations: [
+        'languages',
+        'frameworks',
+        'features',
+        'user',
+        'joins',
+        'joins.user',
+      ],
     });
     if (!recruit) {
       throw new NotFoundException('Recruit Not Found');
