@@ -68,6 +68,6 @@ export class Recruit {
   user: User;
 
   @OneToMany(() => Join, (join) => join.recruit)
-  @Field(() => [Join])
+  @Field(() => [Join], { nullable: true })
   joins: Join;
 }
