@@ -9,13 +9,11 @@ import { UserService } from './user.service';
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
 
-  @UseGuards(GraphqlAuthGuard)
   @Query(() => [User], { name: 'users' })
   findAll() {
     return this.userService.findAll();
   }
 
-  @UseGuards(GraphqlAuthGuard)
   @Query(() => User, { name: 'findUserId' })
   findOneId(@Args('id') id: string) {
     return this.userService.findOne({ userId: id });

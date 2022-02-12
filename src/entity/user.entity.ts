@@ -20,17 +20,9 @@ export class User {
 
   @Column({ type: 'varchar', length: 30, nullable: true })
   @Field({ nullable: true })
-  name: string;
-
-  @Column({ type: 'varchar', length: 30, nullable: true })
-  @Field({ nullable: true })
   nickname: string;
 
-  @Column({ type: 'varchar', length: 20, nullable: true })
-  @Field({ nullable: true })
-  description: string;
-
-  @Column({ type: 'varchar', length: 50, nullable: false })
+  @Column({ type: 'varchar', length: 50, nullable: false, unique: true })
   @Field()
   userId: string;
 

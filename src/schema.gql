@@ -11,9 +11,7 @@ type FrameWork {
 
 type User {
   id: ID!
-  name: String
   nickname: String
-  description: String
   userId: String!
   picture: String
   createdAt: DateTime!
