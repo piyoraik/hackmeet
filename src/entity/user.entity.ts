@@ -37,15 +37,9 @@ export class User {
   @Field(() => Language)
   language: Language;
 
-  @Column({ type: 'varchar', length: 36 })
-  languageId: string;
-
   @ManyToOne(() => FrameWork, (framework) => framework.users)
   @Field(() => FrameWork)
   framework: FrameWork;
-
-  @Column({ type: 'varchar', length: 36 })
-  frameworkId: string;
 
   @CreateDateColumn()
   @Field()
