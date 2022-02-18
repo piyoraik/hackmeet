@@ -1,4 +1,4 @@
-import { Field, ID, InputType } from '@nestjs/graphql';
+import { Field, ID, InputType, Int } from '@nestjs/graphql';
 import { Feature } from 'src/entity/features.entity';
 import { FrameWork } from 'src/entity/frameworks.entity';
 import { Language } from 'src/entity/languages.entity';
@@ -16,6 +16,9 @@ export class CreateRecruitsDTO {
   @Field(() => String)
   content: string;
 
+  @Field(() => Int)
+  peoples: number;
+
   @Field(() => [ID])
   languages: string[];
 
@@ -31,7 +34,7 @@ export class CreateRecruitType {
   frameworks: FrameWork[];
   features: Feature[];
   user: User;
-  id: string;
+  peoples: number;
   title: string;
   thumbnail: string;
   content: string;

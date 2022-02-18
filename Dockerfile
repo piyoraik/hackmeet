@@ -7,7 +7,7 @@ FROM base-node AS build
 COPY . .
 RUN yarn build
 
-FROM base-node as production
+FROM node:14.17.6-alpine as production
 WORKDIR /app
 COPY --from=build /build/ormconfig.js ./ormconfig.js
 COPY --from=build /build/dist ./dist

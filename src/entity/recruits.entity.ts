@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 import {
   Column,
   CreateDateColumn,
@@ -35,6 +35,10 @@ export class Recruit {
   @Field()
   @Column({ type: 'text', nullable: false })
   content: string;
+
+  @Field(() => Int)
+  @Column({ type: 'int', nullable: false })
+  peoples: number;
 
   @Field(() => [Language], { defaultValue: [] })
   @ManyToMany(() => Language, (language) => language.recruits)

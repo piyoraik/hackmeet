@@ -1,6 +1,13 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Recruit } from './recruits.entity';
+import { User } from './user.entity';
 
 @Entity()
 @ObjectType()
@@ -20,6 +27,10 @@ export class Language {
   @Column({ type: 'varchar', length: 20, nullable: false })
   @Field()
   color: string;
+
+  @OneToMany(() => User, (user) => user.language)
+  @Field(() => User)
+  users: User[];
 
   @ManyToMany(() => Recruit, (recruit) => recruit.languages)
   @Field(() => [Recruit])

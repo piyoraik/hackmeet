@@ -35,8 +35,9 @@ export class UserService {
   }
 
   // update
-  async update(id: string, attrs: Partial<User>) {
-    return await this.userRepository.updateUser(id, attrs);
+  async update(attrs: Partial<User>, userId: string) {
+    const user = await this.findOne({ userId });
+    return await this.userRepository.updateUser(user.id, attrs);
   }
 
   // softDelete

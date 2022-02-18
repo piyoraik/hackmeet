@@ -7,8 +7,11 @@ import {
   PrimaryGeneratedColumn,
   Column,
   OneToMany,
+  ManyToOne,
 } from 'typeorm';
+import { FrameWork } from './frameworks.entity';
 import { Join } from './join.entity';
+import { Language } from './languages.entity';
 import { Recruit } from './recruits.entity';
 
 @Entity()
@@ -29,6 +32,20 @@ export class User {
   @Column({ type: 'varchar', length: 255, nullable: true })
   @Field({ nullable: true })
   picture: string;
+
+  @ManyToOne(() => Language, (language) => language.users)
+  @Field(() => Language)
+  language: Language;
+
+  @Column({ type: 'varchar', length: 36 })
+  languageId: string;
+
+  @ManyToOne(() => FrameWork, (framework) => framework.users)
+  @Field(() => FrameWork)
+  framework: FrameWork;
+
+  @Column({ type: 'varchar', length: 36 })
+  frameworkId: string;
 
   @CreateDateColumn()
   @Field()
