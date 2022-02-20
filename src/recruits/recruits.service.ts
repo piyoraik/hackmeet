@@ -8,6 +8,7 @@ import {
   CreateRecruitsDTO,
   CreateRecruitType,
 } from './dto/create.recruits.dto';
+import { SearchRecruitsDTO } from './dto/search.recruit.dto';
 import { RecruitsRepository } from './recruits.repository';
 
 @Injectable()
@@ -73,7 +74,7 @@ export class RecruitsService {
   }
 
   // findWhere
-  async findWhere(attrs: Partial<Recruit>) {
+  async findWhere(attrs: SearchRecruitsDTO) {
     return await this.recruitsRepository.findWhereLikeRecruit(attrs);
   }
 

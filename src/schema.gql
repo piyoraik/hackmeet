@@ -70,6 +70,7 @@ type Feature {
 type Query {
   recruits: [Recruit!]!
   findOneIdRecruit(id: String!): Recruit!
+  searchRecruit(searchRecruit: SearchRecruitsDTO!): [Recruit!]
   languages: [Language!]!
   frameworks: [FrameWork!]!
   features: [Feature!]!
@@ -77,6 +78,13 @@ type Query {
   findUserId(userId: String!): User!
   findUserPrimaryId(id: String!): User!
   joins: [Join!]!
+}
+
+input SearchRecruitsDTO {
+  title: String
+  languages: [String!]
+  frameworks: [String!]
+  features: [String!]
 }
 
 type Mutation {

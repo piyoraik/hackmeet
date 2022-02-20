@@ -5,6 +5,7 @@ import { Recruit } from 'src/entity/recruits.entity';
 import { UseGuards } from '@nestjs/common';
 import { GraphqlAuthGuard } from 'src/authz/authz.guard';
 import { JwtPayload } from 'src/authz/types/jwt-payload.type';
+import { SearchRecruitsDTO } from './dto/search.recruit.dto';
 
 @Resolver()
 export class RecruitsResolver {
@@ -21,10 +22,10 @@ export class RecruitsResolver {
     return recruit;
   }
 
-  // @Query(() => [Recruit], { name: 'searchRecruit', nullable: true })
-  // search(@Args('searchRecruit') searchWord: Partial<Recruit>) {
-  //   return this.recruitsService.findWhere(searchWord);
-  // }
+  @Query(() => [Recruit], { name: 'searchRecruit', nullable: true })
+  search(@Args('searchRecruit') searchWord: SearchRecruitsDTO) {
+    return this.recruitsService.findWhere(searchWord);
+  }
 
   @UseGuards(GraphqlAuthGuard)
   @Mutation(() => Recruit, { name: 'createRecruit' })
