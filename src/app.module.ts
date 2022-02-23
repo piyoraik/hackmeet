@@ -12,6 +12,8 @@ import { AuthzModule } from './authz/authz.module';
 import { UserModule } from './user/user.module';
 import { JoinModule } from './join/join.module';
 import { WorkspaceModule } from './workspace/workspace.module';
+import { ChatGroupService } from './chat-group/chat-group.service';
+import { ChatGroupModule } from './chat-group/chat-group.module';
 
 @Module({
   imports: [
@@ -33,6 +35,8 @@ import { WorkspaceModule } from './workspace/workspace.module';
     UserModule,
     JoinModule,
     WorkspaceModule,
+    ChatGroupModule,
   ],
+  providers: [ChatGroupService],
 })
 export class AppModule {}

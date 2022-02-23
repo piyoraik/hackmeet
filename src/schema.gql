@@ -2,6 +2,19 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Workspace {
+  id: ID!
+  recruit: Recruit!
+  chatGroups: [ChatGroup!]!
+}
+
+type ChatGroup {
+  id: ID!
+  workspace: Workspace!
+  user: User!
+  name: String!
+}
+
 type Join {
   id: ID!
   recruit: Recruit
@@ -42,11 +55,6 @@ type FrameWork {
   icon: String!
   color: String!
   users: User!
-}
-
-type Workspace {
-  id: ID!
-  recruit: Recruit!
 }
 
 type Recruit {
