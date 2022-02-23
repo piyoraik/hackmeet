@@ -1,7 +1,3 @@
-// export class InputJoinDTO {
-//   user:
-// }
-
 import { Field, ID, InputType } from '@nestjs/graphql';
 import { Recruit } from 'src/entity/recruits.entity';
 import { User } from 'src/entity/user.entity';
