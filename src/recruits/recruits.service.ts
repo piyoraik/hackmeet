@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ChatGroupRepository } from 'src/chat-group/chat-group.repository';
+import { ChannelRepository } from 'src/channel/channel.repository';
 import { Recruit } from 'src/entity/recruits.entity';
 import { FeaturesService } from 'src/features/features.service';
 import { FrameworksService } from 'src/frameworks/frameworks.service';
@@ -22,7 +22,7 @@ export class RecruitsService {
     private readonly featureService: FeaturesService,
     private readonly userService: UserService,
     private readonly workspaceService: WorkspaceService,
-    private readonly chatGroupRepository: ChatGroupRepository,
+    private readonly ChannelRepository: ChannelRepository,
   ) {}
 
   // create
@@ -62,7 +62,7 @@ export class RecruitsService {
     );
 
     const workspace = await this.workspaceService.create(createdRecruit);
-    await this.chatGroupRepository.createChatGroup({
+    await this.ChannelRepository.createChannel({
       workspace,
       user,
       name: 'General',

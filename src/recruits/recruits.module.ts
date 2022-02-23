@@ -8,18 +8,18 @@ import { FrameworksModule } from 'src/frameworks/frameworks.module';
 import { FeaturesModule } from 'src/features/features.module';
 import { UserModule } from 'src/user/user.module';
 import { WorkspaceModule } from 'src/workspace/workspace.module';
-import { ChatGroupModule } from 'src/chat-group/chat-group.module';
-import { ChatGroupRepository } from 'src/chat-group/chat-group.repository';
+import { ChannelModule } from 'src/channel/channel.module';
+import { ChannelRepository } from 'src/channel/channel.repository';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([RecruitsRepository, ChatGroupRepository]),
+    TypeOrmModule.forFeature([RecruitsRepository, ChannelRepository]),
     LanguagesModule,
     FrameworksModule,
     FeaturesModule,
     UserModule,
     WorkspaceModule,
-    ChatGroupModule,
+    ChannelModule,
   ],
   providers: [RecruitsService, RecruitsResolver],
   exports: [RecruitsService],

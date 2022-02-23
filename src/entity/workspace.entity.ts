@@ -6,7 +6,7 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { ChatGroup } from './chat-group.entity';
+import { Channel } from './channel.entity';
 import { Recruit } from './recruits.entity';
 
 @Entity()
@@ -21,7 +21,7 @@ export class Workspace {
   @Field(() => Recruit)
   recruit: Recruit;
 
-  @OneToMany(() => ChatGroup, (chatGroup) => chatGroup.workspace)
-  @Field(() => [ChatGroup])
-  chatGroups: ChatGroup[];
+  @OneToMany(() => Channel, (channel) => channel.workspace)
+  @Field(() => [Channel])
+  channels: Channel[];
 }

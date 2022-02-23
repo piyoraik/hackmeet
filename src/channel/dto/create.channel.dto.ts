@@ -3,7 +3,7 @@ import { User } from 'src/entity/user.entity';
 import { Workspace } from 'src/entity/workspace.entity';
 
 @InputType()
-export class InputChatGroupDTO {
+export class InputChannelDTO {
   @Field(() => ID)
   id: string;
 
@@ -14,7 +14,7 @@ export class InputChatGroupDTO {
   isPublic: boolean;
 }
 
-export class CreateChatGroupDTO {
+export class CreateChannelDTO {
   workspace: Workspace;
 
   user: User;

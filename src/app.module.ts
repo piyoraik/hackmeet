@@ -12,7 +12,7 @@ import { AuthzModule } from './authz/authz.module';
 import { UserModule } from './user/user.module';
 import { JoinModule } from './join/join.module';
 import { WorkspaceModule } from './workspace/workspace.module';
-import { ChatGroupModule } from './chat-group/chat-group.module';
+import { ChannelModule } from './channel/channel.module';
 
 @Module({
   imports: [
@@ -34,7 +34,7 @@ import { ChatGroupModule } from './chat-group/chat-group.module';
     UserModule,
     JoinModule,
     WorkspaceModule,
-    ChatGroupModule,
+    ChannelModule,
   ],
 })
 export class AppModule {}

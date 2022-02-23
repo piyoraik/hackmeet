@@ -9,7 +9,7 @@ import {
   OneToMany,
   ManyToOne,
 } from 'typeorm';
-import { ChatGroup } from './chat-group.entity';
+import { Channel } from './channel.entity';
 import { FrameWork } from './frameworks.entity';
 import { Join } from './join.entity';
 import { Language } from './languages.entity';
@@ -62,6 +62,6 @@ export class User {
   @Field(() => [Join])
   joins: Join;
 
-  @OneToMany(() => ChatGroup, (chatGroup) => chatGroup.user)
-  chatGroups: ChatGroup[];
+  @OneToMany(() => Channel, (channel) => channel.user)
+  channels: Channel[];
 }

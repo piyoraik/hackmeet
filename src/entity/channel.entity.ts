@@ -5,16 +5,16 @@ import { Workspace } from './workspace.entity';
 
 @Entity()
 @ObjectType()
-export class ChatGroup {
+export class Channel {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
   id: string;
 
-  @ManyToOne(() => Workspace, (workspace) => workspace.chatGroups)
+  @ManyToOne(() => Workspace, (workspace) => workspace.channels)
   @Field(() => Workspace)
   workspace: Workspace;
 
-  @ManyToOne(() => User, (user) => user.chatGroups)
+  @ManyToOne(() => User, (user) => user.channels)
   @Field(() => User)
   user: User;
 

@@ -27,7 +27,7 @@ type Language {
 type Workspace {
   id: ID!
   recruit: Recruit!
-  chatGroups: [ChatGroup!]!
+  channels: [Channel!]!
 }
 
 type Recruit {
@@ -74,7 +74,7 @@ type User {
   joins: [Join!]!
 }
 
-type ChatGroup {
+type Channel {
   id: ID!
   workspace: Workspace!
   user: User!
