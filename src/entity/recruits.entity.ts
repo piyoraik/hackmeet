@@ -16,6 +16,7 @@ import { FrameWork } from './frameworks.entity';
 import { Join } from './join.entity';
 import { Language } from './languages.entity';
 import { User } from './user.entity';
+import { Workspace } from './workspace.entity';
 
 @Entity()
 @ObjectType()
@@ -74,4 +75,8 @@ export class Recruit {
   @OneToMany(() => Join, (join) => join.recruit)
   @Field(() => [Join], { nullable: true })
   joins: Join;
+
+  @OneToMany(() => Workspace, (workspace) => workspace.recruit)
+  @Field(() => [Workspace])
+  workspaces: Workspace[];
 }

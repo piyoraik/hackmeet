@@ -11,6 +11,7 @@ import { FeaturesModule } from './features/features.module';
 import { AuthzModule } from './authz/authz.module';
 import { UserModule } from './user/user.module';
 import { JoinModule } from './join/join.module';
+import { WorkspaceModule } from './workspace/workspace.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { JoinModule } from './join/join.module';
     AuthzModule,
     UserModule,
     JoinModule,
+    WorkspaceModule,
   ],
 })
 export class AppModule {}
