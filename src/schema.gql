@@ -44,12 +44,6 @@ type FrameWork {
   users: User!
 }
 
-type Workspace {
-  id: ID!
-  recruit: Recruit!
-  name: String!
-}
-
 type Recruit {
   id: ID!
   title: String!
@@ -64,7 +58,6 @@ type Recruit {
   deletedAt: DateTime!
   user: User!
   joins: [Join!]
-  workspaces: [Workspace!]!
 }
 
 type Feature {

@@ -75,8 +75,4 @@ export class Recruit {
   @OneToMany(() => Join, (join) => join.recruit)
   @Field(() => [Join], { nullable: true })
   joins: Join;
-
-  @OneToMany(() => Workspace, (workspace) => workspace.recruit)
-  @Field(() => [Workspace])
-  workspaces: Workspace[];
 }

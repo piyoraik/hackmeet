@@ -4,6 +4,7 @@ import { FeaturesService } from 'src/features/features.service';
 import { FrameworksService } from 'src/frameworks/frameworks.service';
 import { LanguagesService } from 'src/languages/languages.service';
 import { UserService } from 'src/user/user.service';
+import { WorkspaceService } from 'src/workspace/workspace.service';
 import {
   CreateRecruitsDTO,
   CreateRecruitType,
@@ -19,6 +20,7 @@ export class RecruitsService {
     private readonly frameworkService: FrameworksService,
     private readonly featureService: FeaturesService,
     private readonly userService: UserService,
+    private readonly workspaceService: WorkspaceService,
   ) {}
 
   // create
@@ -53,7 +55,12 @@ export class RecruitsService {
       features: resFeatures,
       user,
     };
-    return await this.recruitsRepository.createRecruit(createRecruit);
+    const createdRecruit = await this.recruitsRepository.createRecruit(
+      createRecruit,
+    );
+
+    await this.workspaceService.create(createdRecruit);
+    return createdRecruit;
   }
 
   // findAll

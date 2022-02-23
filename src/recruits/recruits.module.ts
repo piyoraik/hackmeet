@@ -7,6 +7,7 @@ import { LanguagesModule } from 'src/languages/languages.module';
 import { FrameworksModule } from 'src/frameworks/frameworks.module';
 import { FeaturesModule } from 'src/features/features.module';
 import { UserModule } from 'src/user/user.module';
+import { WorkspaceModule } from 'src/workspace/workspace.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { UserModule } from 'src/user/user.module';
     FrameworksModule,
     FeaturesModule,
     UserModule,
+    WorkspaceModule,
   ],
   providers: [RecruitsService, RecruitsResolver],
   exports: [RecruitsService],

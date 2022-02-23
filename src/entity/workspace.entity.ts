@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Recruit } from './recruits.entity';
 
 @Entity()
@@ -9,11 +9,8 @@ export class Workspace {
   @Field(() => ID)
   id: string;
 
-  @ManyToOne(() => Recruit, (recruit) => recruit.workspaces)
+  @OneToOne(() => Recruit)
+  @JoinColumn()
   @Field(() => Recruit)
   recruit: Recruit;
-
-  @Column()
-  @Field(() => String)
-  name: string;
 }
