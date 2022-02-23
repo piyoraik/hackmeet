@@ -8,6 +8,7 @@ import {
   ManyToMany,
   ManyToOne,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -75,4 +76,8 @@ export class Recruit {
   @OneToMany(() => Join, (join) => join.recruit)
   @Field(() => [Join], { nullable: true })
   joins: Join;
+
+  @OneToOne(() => Workspace, (workspace) => workspace.recruit)
+  @Field(() => Workspace)
+  workspace: Workspace;
 }
