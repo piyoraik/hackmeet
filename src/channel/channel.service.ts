@@ -33,7 +33,7 @@ export class ChannelService {
   // findAll
   async findAll() {
     return await this.chatGroupRepository.find({
-      relations: ['user', 'recruit'],
+      relations: ['user', 'workspace'],
     });
   }
 

@@ -94,6 +94,7 @@ type Query {
   findUserId(userId: String!): User!
   findUserPrimaryId(id: String!): User!
   findOneWorkspace(id: String!): Workspace!
+  findOneChannel(id: String!): Channel!
   joins: [Join!]!
 }
 
