@@ -5,7 +5,7 @@ import { Workspace } from 'src/entity/workspace.entity';
 @InputType()
 export class InputChannelDTO {
   @Field(() => ID)
-  id: string;
+  workspaceId: string;
 
   @Field(() => String)
   name: string;

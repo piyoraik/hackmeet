@@ -8,7 +8,7 @@ import { CreateChannelDTO, InputChannelDTO } from './dto/create.channel.dto';
 @Injectable()
 export class ChannelService {
   constructor(
-    private readonly chatGroupRepository: ChannelRepository,
+    private readonly channelRepository: ChannelRepository,
     private readonly workspaceService: WorkspaceService,
     private readonly userService: UserService,
   ) {}
@@ -17,7 +17,7 @@ export class ChannelService {
   async create(inputChannelDTO: InputChannelDTO, userId: string) {
     const user = await this.userService.findOne({ userId });
     const workspace = await this.workspaceService.findOne({
-      id: inputChannelDTO.id,
+      id: inputChannelDTO.workspaceId,
     });
 
     const createChannel: CreateChannelDTO = {
@@ -27,38 +27,38 @@ export class ChannelService {
       isPublic: inputChannelDTO.isPublic,
     };
 
-    return await this.chatGroupRepository.createChannel(createChannel);
+    return await this.channelRepository.createChannel(createChannel);
   }
 
   // findAll
   async findAll() {
-    return await this.chatGroupRepository.find({
+    return await this.channelRepository.find({
       relations: ['user', 'workspace'],
     });
   }
 
   // findOneID
   async findOneID(id: string) {
-    return await this.chatGroupRepository.findOneChannel({ id });
+    return await this.channelRepository.findOneChannel({ id });
   }
 
   // findOne
   async findOne(attrs: Partial<Channel>) {
-    return await this.chatGroupRepository.findOneChannel(attrs);
+    return await this.channelRepository.findOneChannel(attrs);
   }
 
   // findWhere
   async findWhere(attrs: Partial<Channel>) {
-    return await this.chatGroupRepository.findWhereLikeChannel(attrs);
+    return await this.channelRepository.findWhereLikeChannel(attrs);
   }
 
   // update
   async update(id: string, attrs: Partial<Channel>) {
-    return await this.chatGroupRepository.updateChannel(id, attrs);
+    return await this.channelRepository.updateChannel(id, attrs);
   }
 
   // softDelete
   async softDelete(id: string) {
-    return await this.chatGroupRepository.softDeleteChannel(id);
+    return await this.channelRepository.softDeleteChannel(id);
   }
 }

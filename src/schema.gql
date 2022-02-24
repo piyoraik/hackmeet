@@ -120,6 +120,7 @@ type Mutation {
   createUser(createUser: CreateUserDTO!): User!
   updateUser(updateUser: UpdateUserDTO!): User!
   createJoin(createJoin: InputJoinDTO!): Join!
+  createChannelMessage(createChannelMessage: InputChannelMessageDTO!): ChannelMessage!
 }
 
 input CreateRecruitsDTO {
@@ -147,4 +148,9 @@ input UpdateUserDTO {
 
 input InputJoinDTO {
   workspace: ID!
+}
+
+input InputChannelMessageDTO {
+  channelId: ID!
+  message: String!
 }
