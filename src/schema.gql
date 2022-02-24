@@ -73,11 +73,20 @@ type User {
   recruits: [Recruit!]!
   joins: [Join!]!
   channels: [Channel!]!
+  channelMessages: [ChannelMessage!]!
+}
+
+type ChannelMessage {
+  id: ID!
+  channel: Channel!
+  user: User!
+  message: String!
 }
 
 type Channel {
   id: ID!
   workspace: Workspace!
+  channelMessages: [ChannelMessage!]!
   user: User!
   name: String!
   isPublic: Boolean!

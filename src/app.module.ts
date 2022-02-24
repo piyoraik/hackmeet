@@ -13,6 +13,7 @@ import { UserModule } from './user/user.module';
 import { JoinModule } from './join/join.module';
 import { WorkspaceModule } from './workspace/workspace.module';
 import { ChannelModule } from './channel/channel.module';
+import { ChannelMessageModule } from './channel-message/channel-message.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { ChannelModule } from './channel/channel.module';
     JoinModule,
     WorkspaceModule,
     ChannelModule,
+    ChannelMessageModule,
   ],
 })
 export class AppModule {}

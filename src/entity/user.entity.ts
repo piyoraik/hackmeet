@@ -9,6 +9,7 @@ import {
   OneToMany,
   ManyToOne,
 } from 'typeorm';
+import { ChannelMessage } from './channel-message.entity';
 import { Channel } from './channel.entity';
 import { FrameWork } from './frameworks.entity';
 import { Join } from './join.entity';
@@ -65,4 +66,8 @@ export class User {
   @OneToMany(() => Channel, (channel) => channel.user)
   @Field(() => [Channel])
   channels: Channel[];
+
+  @OneToMany(() => ChannelMessage, (channelMessage) => channelMessage.user)
+  @Field(() => [ChannelMessage])
+  channelMessages: ChannelMessage[];
 }
