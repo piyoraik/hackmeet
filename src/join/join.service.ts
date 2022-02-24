@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Join } from 'src/entity/join.entity';
-import { RecruitsService } from 'src/recruits/recruits.service';
 import { UserService } from 'src/user/user.service';
+import { WorkspaceService } from 'src/workspace/workspace.service';
 import { CreateJoinDTO, InputJoinDTO } from './dto/create.join.dto';
 import { JoinRepository } from './join.repository';
 
@@ -10,16 +10,18 @@ export class JoinService {
   constructor(
     private readonly joinRepository: JoinRepository,
     private readonly userService: UserService,
-    private readonly recruitService: RecruitsService,
+    private readonly workspaceService: WorkspaceService,
   ) {}
 
   // create
   async create(inputJoinDTO: InputJoinDTO, userId: string) {
-    const recruit = await this.recruitService.findOneID(inputJoinDTO.recruit);
+    const workspace = await this.workspaceService.findOneID(
+      inputJoinDTO.workspace,
+    );
     const user = await this.userService.findOne({ userId });
 
     const createJoin: CreateJoinDTO = {
-      recruit,
+      workspace,
       user,
     };
 

@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Channel } from './channel.entity';
+import { Join } from './join.entity';
 import { Recruit } from './recruits.entity';
 
 @Entity()
@@ -24,4 +25,8 @@ export class Workspace {
   @OneToMany(() => Channel, (channel) => channel.workspace)
   @Field(() => [Channel])
   channels: Channel[];
+
+  @OneToMany(() => Join, (join) => join.workspace)
+  @Field(() => [Join], { nullable: true })
+  joins: Join;
 }

@@ -50,16 +50,13 @@ export class RecruitsService {
       }),
     );
 
-    const createRecruit: CreateRecruitType = {
+    const createdRecruit = await this.recruitsRepository.createRecruit({
       ...recruit,
       languages: resLangues,
       frameworks: resFrameworks,
       features: resFeatures,
       user,
-    };
-    const createdRecruit = await this.recruitsRepository.createRecruit(
-      createRecruit,
-    );
+    });
 
     const workspace = await this.workspaceService.create(createdRecruit);
     await this.ChannelRepository.createChannel({
@@ -68,13 +65,21 @@ export class RecruitsService {
       name: 'General',
       isPublic: false,
     });
+
     return createdRecruit;
   }
 
   // findAll
   async findAll() {
     return await this.recruitsRepository.find({
-      relations: ['languages', 'frameworks', 'features', 'user', 'joins'],
+      relations: [
+        'languages',
+        'frameworks',
+        'features',
+        'user',
+        'workspace',
+        'workspace.joins',
+      ],
     });
   }
 

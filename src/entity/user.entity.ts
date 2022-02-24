@@ -58,10 +58,11 @@ export class User {
   @Field(() => [Recruit])
   recruits: Recruit[];
 
-  @OneToMany(() => Join, (join) => join.recruit)
+  @OneToMany(() => Join, (join) => join.workspace)
   @Field(() => [Join])
   joins: Join;
 
   @OneToMany(() => Channel, (channel) => channel.user)
+  @Field(() => [Channel])
   channels: Channel[];
 }

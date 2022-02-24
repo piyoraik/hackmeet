@@ -9,12 +9,6 @@ type Feature {
   color: String!
 }
 
-type Join {
-  id: ID!
-  recruit: Recruit
-  user: User
-}
-
 type Language {
   id: ID!
   name: String!
@@ -24,10 +18,17 @@ type Language {
   recruits: [Recruit!]!
 }
 
+type Join {
+  id: ID!
+  workspace: Workspace
+  user: User
+}
+
 type Workspace {
   id: ID!
   recruit: Recruit!
   channels: [Channel!]!
+  joins: [Join!]
 }
 
 type Recruit {
@@ -43,7 +44,6 @@ type Recruit {
   updatedAt: DateTime!
   deletedAt: DateTime!
   user: User!
-  joins: [Join!]
   workspace: Workspace!
 }
 
@@ -72,6 +72,7 @@ type User {
   deletedAt: DateTime
   recruits: [Recruit!]!
   joins: [Join!]!
+  channels: [Channel!]!
 }
 
 type Channel {
@@ -102,7 +103,7 @@ input SearchRecruitsDTO {
 }
 
 type Mutation {
-  createRecruit(createRecruit: CreateRecruitsDTO!): Recruit!
+  createRecruit(createRecruit: CreateRecruitsDTO!): Workspace!
   deleteRecruit(id: String!): Recruit!
   createUser(createUser: CreateUserDTO!): User!
   updateUser(updateUser: UpdateUserDTO!): User!
@@ -133,5 +134,5 @@ input UpdateUserDTO {
 }
 
 input InputJoinDTO {
-  recruit: ID!
+  workspace: ID!
 }

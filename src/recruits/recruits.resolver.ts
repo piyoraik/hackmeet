@@ -6,6 +6,7 @@ import { UseGuards } from '@nestjs/common';
 import { GraphqlAuthGuard } from 'src/authz/authz.guard';
 import { JwtPayload } from 'src/authz/types/jwt-payload.type';
 import { SearchRecruitsDTO } from './dto/search.recruit.dto';
+import { Workspace } from 'src/entity/workspace.entity';
 
 @Resolver()
 export class RecruitsResolver {
@@ -28,7 +29,7 @@ export class RecruitsResolver {
   }
 
   @UseGuards(GraphqlAuthGuard)
-  @Mutation(() => Recruit, { name: 'createRecruit' })
+  @Mutation(() => Workspace, { name: 'createRecruit' })
   create(
     @Args('createRecruit') recruit: CreateRecruitsDTO,
     @Context() context: any,

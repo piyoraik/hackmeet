@@ -24,8 +24,8 @@ export class RecruitsRepository extends Repository<Recruit> {
         'frameworks',
         'features',
         'user',
-        'joins',
-        'joins.user',
+        'workspace',
+        'workspace.joins',
       ],
     });
     if (!recruit) {

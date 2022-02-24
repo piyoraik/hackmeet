@@ -1,7 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Recruit } from './recruits.entity';
 import { User } from './user.entity';
+import { Workspace } from './workspace.entity';
 
 @Entity()
 @ObjectType()
@@ -10,9 +10,9 @@ export class Join {
   @Field(() => ID)
   id: string;
 
-  @ManyToOne(() => Recruit, (recruit) => recruit.joins)
-  @Field(() => Recruit, { nullable: true })
-  recruit: Recruit;
+  @ManyToOne(() => Workspace, (workspace) => workspace.joins)
+  @Field(() => Workspace, { nullable: true })
+  workspace: Workspace;
 
   @ManyToOne(() => User, (user) => user.joins)
   @Field(() => User, { nullable: true })

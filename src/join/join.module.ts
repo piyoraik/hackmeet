@@ -4,13 +4,13 @@ import { JoinResolver } from './join.resolver';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JoinRepository } from './join.repository';
 import { UserModule } from 'src/user/user.module';
-import { RecruitsModule } from 'src/recruits/recruits.module';
+import { WorkspaceModule } from 'src/workspace/workspace.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([JoinRepository]),
     UserModule,
-    RecruitsModule,
+    WorkspaceModule,
   ],
   providers: [JoinService, JoinResolver],
   exports: [JoinService],

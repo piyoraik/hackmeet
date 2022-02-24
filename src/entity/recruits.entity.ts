@@ -7,14 +7,12 @@ import {
   JoinTable,
   ManyToMany,
   ManyToOne,
-  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Feature } from './features.entity';
 import { FrameWork } from './frameworks.entity';
-import { Join } from './join.entity';
 import { Language } from './languages.entity';
 import { User } from './user.entity';
 import { Workspace } from './workspace.entity';
@@ -72,10 +70,6 @@ export class Recruit {
   @ManyToOne(() => User, (user) => user.recruits)
   @Field(() => User)
   user: User;
-
-  @OneToMany(() => Join, (join) => join.recruit)
-  @Field(() => [Join], { nullable: true })
-  joins: Join;
 
   @OneToOne(() => Workspace, (workspace) => workspace.recruit)
   @Field(() => Workspace)
