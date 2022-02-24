@@ -16,10 +16,14 @@ export class WorkSpaceRepository extends Repository<Workspace> {
 
   // findOne
   async findOneWorkspace(attrs: Partial<Workspace>) {
-    const workspace = await this.findOne(attrs);
+    console.log(attrs);
+    const workspace = await this.findOne(attrs, {
+      relations: ['recruit', 'joins', 'joins.user', 'channels'],
+    });
     if (!workspace) {
       throw new NotFoundException('Workspace Not Found');
     }
+    console.log(workspace);
     return workspace;
   }
 

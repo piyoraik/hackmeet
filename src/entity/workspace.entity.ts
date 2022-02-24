@@ -28,5 +28,5 @@ export class Workspace {
 
   @OneToMany(() => Join, (join) => join.workspace)
   @Field(() => [Join], { nullable: true })
-  joins: Join;
+  joins: Join[];
 }

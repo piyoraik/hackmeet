@@ -80,6 +80,7 @@ type Channel {
   workspace: Workspace!
   user: User!
   name: String!
+  isPublic: Boolean!
 }
 
 type Query {
@@ -92,6 +93,7 @@ type Query {
   users: [User!]!
   findUserId(userId: String!): User!
   findUserPrimaryId(id: String!): User!
+  findOneWorkspace(id: String!): Workspace!
   joins: [Join!]!
 }
 

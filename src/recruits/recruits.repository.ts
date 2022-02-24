@@ -70,7 +70,7 @@ export class RecruitsRepository extends Repository<Recruit> {
           feature: 'recruit.features',
         },
       },
-      relations: ['joins', 'user'],
+      relations: ['workspace', 'workspace.joins', 'user'],
       where: (qb: SelectQueryBuilder<Recruit>) => {
         recruitQuery(qb);
       },

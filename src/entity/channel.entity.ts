@@ -23,5 +23,6 @@ export class Channel {
   name: string;
 
   @Column()
+  @Field(() => Boolean)
   isPublic: boolean;
 }
