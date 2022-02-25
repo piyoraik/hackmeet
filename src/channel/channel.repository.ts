@@ -18,7 +18,13 @@ export class ChannelRepository extends Repository<Channel> {
   async findOneChannel(attrs: Partial<Channel>) {
     const channel = await this.findOne({
       where: attrs,
-      relations: ['user', 'workspace', 'workspace.recruit'],
+      relations: [
+        'user',
+        'workspace',
+        'workspace.recruit',
+        'channelMessages',
+        'channelMessages.user',
+      ],
     });
     if (!channel) {
       throw new NotFoundException('Channel Not Found');
