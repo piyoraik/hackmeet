@@ -122,6 +122,7 @@ type Mutation {
   deleteRecruit(id: String!): Recruit!
   createUser(createUser: CreateUserDTO!): User!
   updateUser(updateUser: UpdateUserDTO!): User!
+  createChannel(createChannel: InputChannelDTO!): Channel!
   createJoin(createJoin: InputJoinDTO!): Join!
   createChannelMessage(createChannelMessage: InputChannelMessageDTO!): ChannelMessage!
 }
@@ -147,6 +148,12 @@ input UpdateUserDTO {
   nickname: String
   description: String
   picture: String
+}
+
+input InputChannelDTO {
+  workspaceId: ID!
+  name: String!
+  isPublic: Boolean!
 }
 
 input InputJoinDTO {
