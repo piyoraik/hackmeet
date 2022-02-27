@@ -17,7 +17,11 @@ import { Language } from './languages.entity';
 import { User } from './user.entity';
 import { Workspace } from './workspace.entity';
 
-@Entity()
+@Entity({
+  orderBy: {
+    createdAt: 'DESC',
+  },
+})
 @ObjectType()
 export class Recruit {
   @Field(() => ID)

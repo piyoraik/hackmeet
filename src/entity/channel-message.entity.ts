@@ -1,5 +1,13 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Channel } from './channel.entity';
 import { User } from './user.entity';
 
@@ -21,4 +29,16 @@ export class ChannelMessage {
   @Column()
   @Field(() => String)
   message: string;
+
+  @CreateDateColumn()
+  @Field()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  @Field()
+  updatedAt: Date;
+
+  @DeleteDateColumn()
+  @Field({ nullable: true })
+  deletedAt: Date;
 }

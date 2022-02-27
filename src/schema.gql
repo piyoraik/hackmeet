@@ -81,6 +81,9 @@ type ChannelMessage {
   channel: Channel!
   user: User!
   message: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
 }
 
 type Channel {
@@ -153,4 +156,8 @@ input InputJoinDTO {
 input InputChannelMessageDTO {
   channelId: ID!
   message: String!
+}
+
+type Subscription {
+  createChannelMessage: ChannelMessage!
 }

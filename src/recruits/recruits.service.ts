@@ -6,10 +6,7 @@ import { FrameworksService } from 'src/frameworks/frameworks.service';
 import { LanguagesService } from 'src/languages/languages.service';
 import { UserService } from 'src/user/user.service';
 import { WorkspaceService } from 'src/workspace/workspace.service';
-import {
-  CreateRecruitsDTO,
-  CreateRecruitType,
-} from './dto/create.recruits.dto';
+import { CreateRecruitsDTO } from './dto/create.recruits.dto';
 import { SearchRecruitsDTO } from './dto/search.recruit.dto';
 import { RecruitsRepository } from './recruits.repository';
 
