@@ -16,15 +16,16 @@ export class ChannelRepository extends Repository<Channel> {
 
   // findOne
   async findOneChannel(attrs: Partial<Channel>) {
-    const channel = await this.createQueryBuilder('channel')
-      .leftJoinAndSelect('channel.user', 'user')
-      .leftJoinAndSelect('channel.workspace', 'workspace')
-      .leftJoinAndSelect('workspace.recruit', 'recruit')
-      .leftJoinAndSelect('channel.channelMessages', 'channelMessages')
-      .leftJoinAndSelect('channelMessages.user', 'channelMessages.user')
-      .where('channel.id = :id', { id: attrs.id })
-      .orderBy('channelMessages.createdAt', 'ASC')
-      .getOne();
+    const channel = await this.findOne({
+      where: attrs,
+      relations: [
+        'user',
+        'workspace',
+        'workspace.recruit',
+        'channelMessages',
+        'channelMessages.user',
+      ],
+    });
 
     if (!channel) {
       throw new NotFoundException('Channel Not Found');
