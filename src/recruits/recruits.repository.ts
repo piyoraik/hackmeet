@@ -44,17 +44,17 @@ export class RecruitsRepository extends Repository<Recruit> {
       });
 
       if (languages.length) {
-        queryBuilder.orWhere('language.name IN (:...languageNames)', {
+        queryBuilder.andWhere('language.name IN (:...languageNames)', {
           languageNames: languages,
         });
       }
       if (frameworks.length) {
-        queryBuilder.orWhere('framework.name IN (:...frameworkNames)', {
+        queryBuilder.andWhere('framework.name IN (:...frameworkNames)', {
           frameworkNames: frameworks,
         });
       }
       if (features.length) {
-        queryBuilder.orWhere('feature.name IN (:...featureNames)', {
+        queryBuilder.andWhere('feature.name IN (:...featureNames)', {
           featureNames: features,
         });
       }
